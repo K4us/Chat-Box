@@ -1,9 +1,15 @@
 "use strict";
 var appendFakeMessage;
-var MessageBox = function () {
-  this.messageContent = $('#messages-content');
-  this.i = 0;
+var MessageBox = function (option) {
+  var chat = $('#chat');
+  chat.css({
+    'width': option.width + 'px',
+    'height': option.height + 'px'
+  });
+  this.user = option.user;
   this.timeI = 0;
+  this.messageContent = $('#messages-content');
+  this.inputMessage = $('#message-input');
   this.messageContent.mCustomScrollbar();
   this.textAlign = {
     LEFT: 'text-align-left',
@@ -29,42 +35,59 @@ var MessageBox = function () {
   };
 
   this.insertMessage = function () {
-    var msg = $('.message-input').val();
-    if ($.trim(msg) == '') {
-      return false;
-    }
-    $('<div class="message message-personal">' + msg + '</div>').appendTo($('.mCSB_container')).addClass('new');
-    this.setInfo(this.textAlign.RIGHT, (new Date()).toISOString());
-    $('.message-input').val(null);
-    this.updateScrollbar();
+    var msg = this.inputMessage.val().substr(0, 150);
+    if ($.trim(msg) == '') return;
+    var self = this;
+    setTimeout(function () {
+      self.inputMessage.val(null);
+    }, 0);
+    var message = {
+      text: msg,
+      sender: this.user
+    };
+    // open on production
+    // socket.emit('message', message);
+
+    // remove on production
+    this.appendMessage(message);
     setTimeout(function () {
       appendFakeMessage();
     }, 1000 + (Math.random() * 20) * 100);
   };
 
-  $('.message-submit').click(function () {
-    this.insertMessage();
-  });
   var self = this;
-  $('#message-input').on('keydown', function (e) {
+  $('#message-submit').click(function () {
+    self.insertMessage();
+  });
+  this.inputMessage.on('keydown', function (e) {
     if (e.which == 13) {
-      self.insertMessage();
-      return false;
+      if (e.ctrlKey) {
+        self.inputMessage.val(self.inputMessage.val() + '\n')
+        self.inputMessage.scrollTop(self.inputMessage.height());
+      } else {
+        self.insertMessage();
+      }
     }
   });
 
   this.loading = function () {
-    if ($('#message-input').val() != '') return false;
+    if (this.inputMessage.val() != '') return false;
     var element = '<div class="message loading new"><figure class="avatar"><img src="image/avatar-unknown.png" /></figure><span></span></div>';
     $(element).appendTo($('.mCSB_container'));
     this.updateScrollbar();
   };
 
   this.appendMessage = function (message) {
-    $('.message.loading').remove();
-    var element = '<div class="message new"><figure class="avatar"><img src="image/avatar.png" /></figure>' + message + '</div>'
-    $(element).appendTo($('.mCSB_container')).addClass('new');
-    this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), 'sender');
+    if (message.sender.id == this.user.id) {
+      $('<div class="message message-personal">' + message.text + '</div>').appendTo($('.mCSB_container')).addClass('new');
+      this.setInfo(this.textAlign.RIGHT, (new Date()).toISOString());
+    } else {
+      $('.message.loading').remove();
+      var element = '<div class="message new"><figure class="avatar"><img src="' + message.sender.avatar + '" /></figure>' + message.text + '</div>'
+      $(element).appendTo($('.mCSB_container')).addClass('new');
+      this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
+    }
+
     this.updateScrollbar();
   }
 };
@@ -72,11 +95,26 @@ var MessageBox = function () {
 $(document).ready(function () {
   var fakeMessages = ['Hi there, I\'m Fabio and you?', 'Nice to meet you', 'How are you?', 'Not too bad, thanks', 'What do you do?', 'That\'s awesome', 'Codepen is a nice place to stay', 'I think you\'re a nice person', 'Why do you think that?', 'Can you explain?', 'Anyway I\'ve gotta go now', 'It was a pleasure chat with you', 'Time to make a new codepen', 'Bye', ':)'];
   var i = 0;
-  var messageBox = new MessageBox();
+  var user = {
+    id: '123',
+    name: 'sender'
+  };
+  var messageBox = new MessageBox({
+    user: user,
+    width: 400,
+    height: 600
+  });
   appendFakeMessage = function () {
     messageBox.loading();
     setTimeout(() => {
-      messageBox.appendMessage(fakeMessages[i]);
+      messageBox.appendMessage({
+        text: fakeMessages[i],
+        sender: {
+          id: '321',
+          name: 'sender',
+          avatar: 'image/avatar.png'
+        }
+      });
       i++;
       i = i >= fakeMessages.length ? 0 : i;
     }, 1000 + (Math.random() * 20) * 100, this);
