@@ -95,7 +95,7 @@ $font-size: 14px;
     clear: both;
     float: left;
     padding: 6px 10px 7px;
-    border-radius: 5px 5px 5px 0  ;
+    border-radius: 5px 5px 5px 0;
     background: rgba(0, 0, 0, .3);
     margin: 8px 0;
     font-size: $font-size + 1px;
@@ -110,6 +110,9 @@ $font-size: 14px;
       color: rgba(255, 255, 255, .6);
       width: 100%;
       padding-right: 15px;
+    }
+    .sender {
+      color: #fff;
     }
     &::before {
       content: '';
