@@ -22,39 +22,22 @@
 
 /*--------------------Chat Title--------------------*/
 .chat-title {
-  flex: 0 1 45px;
   position: relative;
   z-index: 2;
   background: rgba(0, 0, 0, 0.2);
   color: #fff;
   text-transform: uppercase;
-  text-align: left;
-  padding: 10px 10px 10px 50px; }
+  text-align: center; }
   .chat-title h1,
   .chat-title h2 {
     font-weight: normal;
     font-size: 12px;
-    margin: 0;
+    margin: 5px;
     padding: 0; }
   .chat-title h2 {
     color: rgba(255, 255, 255, 0.5);
     font-size: 10px;
     letter-spacing: 1px; }
-  .chat-title .avatar {
-    position: absolute;
-    z-index: 1;
-    top: 8px;
-    left: 9px;
-    border-radius: 30px;
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.24); }
-    .chat-title .avatar img {
-      width: 100%;
-      height: auto; }
 
 /*--------------------Messages--------------------*/
 .messages {
@@ -85,7 +68,9 @@
       position: absolute;
       bottom: -15px;
       font-size: 11px;
-      color: rgba(255, 255, 255, 0.3); }
+      color: rgba(255, 255, 255, 0.3);
+      width: 100%;
+      padding-right: 15px; }
     .messages .message::before {
       content: '';
       position: absolute;
@@ -124,6 +109,7 @@
     .messages .message:last-child {
       margin-bottom: 30px; }
     .messages .message.new {
+      width: 85%;
       color: #fff;
       transform: scale(0);
       transform-origin: 0 0;
@@ -231,6 +217,16 @@
 
 .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   background-color: rgba(0, 0, 0, 0.5) !important; }
+
+/*--------------------Text Align--------------------*/
+.text-align-left {
+  text-align: left; }
+
+.text-align-center {
+  text-align: center; }
+
+.text-align-right {
+  text-align: right; }
 
 /*--------------------Bounce--------------------*/
 @keyframes bounce {

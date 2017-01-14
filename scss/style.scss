@@ -1,4 +1,5 @@
 /*--------------------Variable--------------------*/
+
 $font-size: 12px;
 
 /*--------------------Mixins--------------------*/
@@ -53,42 +54,23 @@ $font-size: 12px;
 /*--------------------Chat Title--------------------*/
 
 .chat-title {
-  flex: 0 1 45px;
   position: relative;
   z-index: 2;
   background: rgba(0, 0, 0, 0.2);
   color: #fff;
   text-transform: uppercase;
-  text-align: left;
-  padding: 10px 10px 10px 50px;
+  text-align: center;
   h1,
   h2 {
     font-weight: normal;
     font-size: $font-size;
-    margin: 0;
+    margin: 5px;
     padding: 0;
   }
   h2 {
     color: rgba(255, 255, 255, .5);
     font-size: $font-size - 2px;
     letter-spacing: 1px;
-  }
-  .avatar {
-    position: absolute;
-    z-index: 1;
-    top: 8px;
-    left: 9px;
-    border-radius: 30px;
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.24);
-    img {
-      width: 100%;
-      height: auto;
-    }
   }
 }
 
@@ -125,6 +107,8 @@ $font-size: 12px;
       bottom: -15px;
       font-size: $font-size - 1px;
       color: rgba(255, 255, 255, .3);
+      width: 100%;
+      padding-right: 15px;
     }
     &::before {
       content: '';
@@ -170,6 +154,7 @@ $font-size: 12px;
       margin-bottom: 30px;
     }
     &.new {
+      width: 85%;
       color: #fff;
       transform: scale(0);
       transform-origin: 0 0;
@@ -261,6 +246,21 @@ $font-size: 12px;
 
 .mCSB_scrollTools .mCSB_dragger .mCSB_dragger_bar {
   background-color: rgba(0, 0, 0, 0.5)!important;
+}
+
+
+/*--------------------Text Align--------------------*/
+
+.text-align-left {
+  text-align: left;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.text-align-right {
+  text-align: right;
 }
 
 
