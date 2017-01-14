@@ -1,6 +1,6 @@
 /*--------------------Variable--------------------*/
 
-$font-size: 12px;
+$font-size: 14px;
 
 /*--------------------Mixins--------------------*/
 
@@ -37,7 +37,7 @@ $font-size: 12px;
 /*--------------------Chat--------------------*/
 
 .chat {
-  width: 300px;
+  width: 400px;
   height: 80vh;
   max-height: 500px;
   z-index: 2;
@@ -106,7 +106,7 @@ $font-size: 12px;
       position: absolute;
       bottom: -15px;
       font-size: $font-size - 1px;
-      color: rgba(255, 255, 255, .3);
+      color: rgba(255, 255, 255, .6);
       width: 100%;
       padding-right: 15px;
     }
@@ -159,8 +159,10 @@ $font-size: 12px;
       transform: scale(0);
       transform-origin: 0 0;
       animation: bounce 500ms linear both;
+      margin-top: 15px;
     }
     &.loading {
+      width: 85px;
       &::before {
         @include ball;
         border: none;
@@ -202,7 +204,7 @@ $font-size: 12px;
     resize: none;
     color: rgba(255, 255, 255, .7);
     font-size: $font-size + 1px;
-    height: 17px;
+    height: 25px;
     margin: 0;
     padding-right: 20px;
     width: 265px;
