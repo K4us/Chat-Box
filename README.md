@@ -11,7 +11,7 @@
 
 3. Edit sass code in  `scss/style.scss`
 
-4. Let run server.
+4. Let run.
 
          $ grunt sass
          $ http-server -o

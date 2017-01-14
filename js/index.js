@@ -64,14 +64,14 @@ function appendFakeMessage(message) {
   $(element).appendTo($('.mCSB_container'));
   updateScrollbar();
 
-  // setTimeout(function () {
-  //   $('.message.loading').remove();
-  //   var element = '<div class="message new"><figure class="avatar"><img src="image/avatar.png" /></figure>' + fakeMessages[i] + '</div>'
-  //   $(element).appendTo($('.mCSB_container')).addClass('new');
-  //   setInfo(textAlign.LEFT, (new Date()).toISOString(), 'sender');
-  //   updateScrollbar();
-  //   i++;
-  //   i = i >= fakeMessages.length ? 0 : i;
-  // }, 1000 + (Math.random() * 20) * 100);
+  setTimeout(function () {
+    $('.message.loading').remove();
+    var element = '<div class="message new"><figure class="avatar"><img src="image/avatar.png" /></figure>' + fakeMessages[i] + '</div>'
+    $(element).appendTo($('.mCSB_container')).addClass('new');
+    setInfo(textAlign.LEFT, (new Date()).toISOString(), 'sender');
+    updateScrollbar();
+    i++;
+    i = i >= fakeMessages.length ? 0 : i;
+  }, 1000 + (Math.random() * 20) * 100);
 
 }
