@@ -7,4 +7,12 @@ $(document).ready(function () {
         var data = $(this).attr('data');
         $('.' + data).addClass("active");
     });
+    var userOnline = $("#box .user-online .numb");
+    var waitingBoard = $("#box .waiting-board .numb");
+    var playingBoard = $("#box .playing-board .numb");
+    setInterval(function () {
+        userOnline.text(Math.floor(Math.random() * 95) + 5);
+        waitingBoard.text(Math.floor(Math.random() * 95) + 5);
+        playingBoard.text(Math.floor(Math.random() * 95) + 5);
+    }, 3000);
 });

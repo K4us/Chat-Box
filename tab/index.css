@@ -1,3 +1,17 @@
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 1px;
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 1px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
 .box {
     z-index: 10;
     background-color: #008eff;
@@ -13,7 +27,7 @@
 }
 
 .side-bar-item.active {
-    background: #1b9aff;
+    background: #56b4ff;
     color: #ffffff;
 }
 
@@ -26,7 +40,7 @@
     border-left: 0;
     border-bottom: 13px solid transparent;
     border-top: 13px solid transparent;
-    border-left: 10px solid #1b9aff;
+    border-left: 10px solid #56b4ff;
 }
 
 .side-bar-item {
@@ -34,6 +48,7 @@
     display: block;
     border-bottom: 1px solid #ddd;
     height: 70px;
+    text-decoration: none;
 }
 
 .tabe:not(.active) {
@@ -47,10 +62,20 @@
     margin: 0;
 }
 
-.tabe {
+.tabe .title {
+    height: 30px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: center;
+    font-weight: normal;
+    font-size: 14px;
+    padding-top: 5px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.tabe .content {
     overflow-x: hidden;
-    overflow-y: scroll;
-    height: 100%;
+    overflow-y: auto;
     padding-left: 10px;
 }
 
@@ -79,16 +104,25 @@
     background-position: 0 -100px;
 }
 
-::-webkit-scrollbar {
-    width: 12px;
+.side-bar-item .numb {
+    border-radius: 50%;
+    font-size: 15px;
+    padding: 5px;
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    color: black;
+    font-weight: bold;
 }
 
-::-webkit-scrollbar-track {
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-    border-radius: 1px;
+.side-bar-item.user-online .numb {
+    background-color: red;
 }
 
-::-webkit-scrollbar-thumb {
-    border-radius: 1px;
-    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+.side-bar-item.waiting-board .numb {
+    background-color: yellow;
+}
+
+.side-bar-item.playing-board .numb {
+    background-color: green;
 }
