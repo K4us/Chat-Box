@@ -22,7 +22,7 @@ $(document).ready(function () {
     }, 3000);
 
     var tabContent = $('#tab-content');
-    for (var i = 0; i < 100; i++) {
+    for (var i = 0; i < 70; i++) {
         var element = '<a href="#" class="user" data="00' + i + '" onclick="userClick(this);">' +
             '<figure class="avatar">' +
             '<img src="../image/avatar.png" />' +
