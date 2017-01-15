@@ -1,12 +1,17 @@
 "use strict";
+
+function userClick(e) {
+    console.log($(e).attr('data'));
+}
 $(document).ready(function () {
     $("#box .side-bar-item").click(function (e) {
         e.preventDefault();
         $('#box .side-bar-item').removeClass("active");
-        $('#box .tabe').removeClass('active');
+        $('#box .tab').removeClass('active');
         var data = $(this).attr('data');
         $('.' + data).addClass("active");
     });
+
     var userOnline = $("#box .user-online .numb");
     var waitingBoard = $("#box .waiting-board .numb");
     var playingBoard = $("#box .playing-board .numb");
@@ -15,4 +20,15 @@ $(document).ready(function () {
         waitingBoard.text(Math.floor(Math.random() * 95) + 5);
         playingBoard.text(Math.floor(Math.random() * 95) + 5);
     }, 3000);
+
+    var tabContent = $('#tab-content');
+    for (var i = 0; i < 100; i++) {
+        var element = '<a href="#" class="user" data="00' + i + '" onclick="userClick(this);">' +
+            '<figure class="avatar">' +
+            '<img src="../image/avatar.png" />' +
+            '</figure>' +
+            '<span class="name">User 00' + i + '</span>' +
+            '</a>';
+        tabContent.append(element);
+    }
 });

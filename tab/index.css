@@ -51,18 +51,18 @@
     text-decoration: none;
 }
 
-.tabe:not(.active) {
+.tab:not(.active) {
     display: none;
 }
 
-.tabe-box {
+.tab-box {
     float: right;
     width: 80%;
     height: 100%;
     margin: 0;
 }
 
-.tabe .title {
+.tab .title {
     height: 30px;
     text-transform: uppercase;
     color: #fff;
@@ -73,10 +73,14 @@
     background: rgba(0, 0, 0, 0.2);
 }
 
-.tabe .content {
+.tab .content {
+    height: 90%;
     overflow-x: hidden;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding-left: 10px;
+    -moz-box-shadow: inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow: inset 0 0 10px #000000;
 }
 
 .side-bar-item .icon {
@@ -125,4 +129,44 @@
 
 .side-bar-item.playing-board .numb {
     background-color: green;
+}
+
+.tab .user {
+    display: block;
+    margin: 5px;
+    -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
+    box-shadow: inset inset 0 0 1px rgba(0, 0, 0, 0.5);
+    border-radius: 2px;
+    padding: 1px;
+}
+
+.user .avatar,
+.user .name {
+    display: inline-block;
+}
+
+.user .avatar {
+    border-radius: 30px;
+    width: 30px;
+    height: 30px;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 2px solid rgba(255, 255, 255, 0.24);
+}
+
+.user .avatar img {
+    width: 100%;
+    height: auto;
+}
+
+.user .name {
+    color: #fff;
+    margin-left: 5px;
+    /* IE 9 */
+    -ms-transform: translate(0, -10px);
+    /* Safari */
+    -webkit-transform: translate(0, -10px);
+    transform: translate(0, -10px);
 }
