@@ -37,10 +37,9 @@ var MessageBox = function (option) {
   this.insertMessage = function () {
     var msg = this.inputMessage.val().substr(0, 150);
     if ($.trim(msg) == '') return;
-    var self = this;
     setTimeout(function () {
-      self.inputMessage.val(null);
-    }, 0);
+      this.inputMessage.val(null);
+    }.bind(this), 0);
     var message = {
       text: msg,
       sender: this.user
@@ -55,20 +54,17 @@ var MessageBox = function (option) {
     }, 1000 + (Math.random() * 20) * 100);
   };
 
-  var self = this;
-  $('#message-submit').click(function () {
-    self.insertMessage();
-  });
+  $('#message-submit').click(this.insertMessage.bind(this));
   this.inputMessage.on('keydown', function (e) {
     if (e.which == 13) {
       if (e.ctrlKey) {
-        self.inputMessage.val(self.inputMessage.val() + '\n')
-        self.inputMessage.scrollTop(self.inputMessage.height());
+        this.inputMessage.val(this.inputMessage.val() + '\n')
+        this.inputMessage.scrollTop(this.inputMessage.height());
       } else {
-        self.insertMessage();
+        this.insertMessage();
       }
     }
-  });
+  }.bind(this));
 
   this.loading = function () {
     if (this.inputMessage.val() != '') return false;
