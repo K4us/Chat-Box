@@ -2,13 +2,15 @@
 
 function ActiveBox(option) {
     var box = $('#box');
-    var tabBox = $('#tab-box');
     box.css({
         'width': option.width + 'px',
         'height': option.height + 'px'
     });
-    tabBox.css({
-        'width': (option.width - 60) + 'px',
+    $('#tab-box').css({
+        'width': (option.width - 60) + 'px'
+    })
+    $('#tab-box .tab .content').css({
+        'width': (option.width - 70) + 'px',
         'height': (option.height - 35) + 'px'
     })
 
