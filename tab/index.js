@@ -28,15 +28,15 @@ function ActiveBox(option) {
         $('.' + data).addClass("active");
     });
     this.userOnlineCount = function (n) {
-        if (n != void 0) return Number(this._userOnline.text() || 0);
+        if (n == void 0) return Number(this._userOnline.text() || 0);
         this._userOnline.text(n);
     };
     this.waitingBoardCount = function (n) {
-        if (n != void 0) return Number(this._waitingBoard.text() || 0);
+        if (n == void 0) return Number(this._waitingBoard.text() || 0);
         this._waitingBoard.text(n);
     };
     this.playingBoardCount = function (n) {
-        if (n != void 0) return Number(this._playingBoard.text() || 0);
+        if (n == void 0) return Number(this._playingBoard.text() || 0);
         this._playingBoard.text(n);
     };
     this.addUser = function (user) {

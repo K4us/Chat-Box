@@ -183,6 +183,11 @@
     display: inline-block;
 }
 
+.waiting-board.tab .board .user {
+    width:70%;
+    overflow-x: auto;
+}
+
 .waiting-board.tab .board .vs {
     float: right;   
     vertical-align: middle;
@@ -233,4 +238,9 @@
 
 .playing-board.tab .board .right-user {
     float: right;
+}
+
+.playing-board.tab .board .user {
+    width: 40%;
+    overflow-x: auto;
 }
