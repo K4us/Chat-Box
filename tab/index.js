@@ -10,7 +10,6 @@ function ActiveBox(option) {
         'width': (option.width - 60) + 'px'
     })
     $('#tab-box .tab .content').css({
-        'width': (option.width - 70) + 'px',
         'height': (option.height - 35) + 'px'
     })
 
@@ -59,8 +58,8 @@ function ActiveBox(option) {
         ActiveBox._waitingBoardClickListeners.push([listener, context]);
     };
     this.addPlayingBoardClickListener = function (listener, context) {
-        ActiveBox._playBoardClickListeners = ActiveBox._playBoardClickListeners || [];
-        ActiveBox._playBoardClickListeners.push([listener, context]);
+        ActiveBox._playingBoardClickListeners = ActiveBox._playingBoardClickListeners || [];
+        ActiveBox._playingBoardClickListeners.push([listener, context]);
     };
 }
 
