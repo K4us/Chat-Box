@@ -27,7 +27,7 @@ $(document).ready(function () {
             '<figure class="avatar">' +
             '<img src="../image/avatar.png" />' +
             '</figure>' +
-            '<span class="name">User 00' + i + '</span>' +
+            '<span class="name">User 00 asd fa sdf asd f asd f asf as f as fas s fas dfasdf asdf as df asd' + i + '</span>' +
             '</a>';
         tabContent.append(element);
     }

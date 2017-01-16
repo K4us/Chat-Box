@@ -164,9 +164,6 @@
 .user .name {
     color: #fff;
     margin-left: 5px;
-    /* IE 9 */
-    -ms-transform: translate(0, -10px);
-    /* Safari */
-    -webkit-transform: translate(0, -10px);
-    transform: translate(0, -10px);
+    vertical-align: top;
+    margin-top: 5px;
 }
