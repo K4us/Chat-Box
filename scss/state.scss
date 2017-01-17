@@ -68,8 +68,7 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            -webkit-transform: translate(-50%, -50%);
-            transform: translate(-50%, -50%);
+            @include prefix-transform(translate(-50%, -50%));
         }
         .count {
             @include prefix-border-radius(50%);

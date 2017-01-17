@@ -127,8 +127,8 @@ $font-size: 14px;
     &.new {
       width: 85%;
       color: #fff;
-      transform: scale(0);
-      transform-origin: 0 0;
+      @include prefix-transform(scale(0));
+      @include prefix-transform-origin(0 0);
       @include prefix-animation(bounce 500ms linear both);
       margin-top: 15px;
     }
@@ -197,7 +197,7 @@ $font-size: 14px;
     padding: 6px 10px;
     @include prefix-border-radius(10px);
     outline: none!important;
-    transition: background .2s ease;
+    @include prefix-transition(background .2s ease);
     &:hover {
       background: #1D7745;
     }
