@@ -1,4 +1,4 @@
-@keyframes bounce {
+@include keyframes(bounce) {
     0% {
         transform: matrix3d(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);
     }
@@ -40,7 +40,7 @@
     }
 }
 
-@keyframes ball {
+@include keyframes(ball) {
     from {
         transform: translateY(0) scaleY(.8);
     }
@@ -49,7 +49,7 @@
     }
 }
 
-@keyframes loader {
+@include keyframes(loader) {
     0% {
         -webkit-transform: translateY(0);
     }

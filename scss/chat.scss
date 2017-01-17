@@ -1,42 +1,8 @@
-/*--------------------Variable--------------------*/
-
 $font-size: 14px;
-
-/*--------------------Mixins--------------------*/
-
-@mixin center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@mixin ball {
-  @include center;
-  content: '';
-  display: block;
-  width: 3px;
-  height: 3px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, .5);
-  z-index: 2;
-  margin-top: 4px;
-  animation: ball .45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
-}
-
-
-/*--------------------Body--------------------*/
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
 
 /*--------------------Chat--------------------*/
 
-.chat {
+#chat {
   min-width: 320px;
   min-height: 568px;
   width: 100%;
@@ -45,7 +11,7 @@ $font-size: 14px;
   overflow: hidden;
   box-shadow: 0 5px 30px rgba(0, 0, 0, .2);
   background: rgb(0, 142, 255);
-  border-radius: 0 10px 0 0;
+  @include prefix-border-radius(0 10px 0 0);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -85,7 +51,7 @@ $font-size: 14px;
   overflow: hidden;
   position: relative;
   width: 100%;
-  & .messages-content {
+  .messages-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -96,7 +62,7 @@ $font-size: 14px;
     clear: both;
     float: left;
     padding: 6px 10px 7px;
-    border-radius: 5px 5px 5px 0;
+    @include prefix-border-radius(5px 5px 5px 0);
     background: rgba(0, 0, 0, .3);
     margin: 8px 0;
     font-size: $font-size + 1px;
@@ -128,7 +94,7 @@ $font-size: 14px;
       z-index: 1;
       bottom: -15px;
       left: -35px;
-      border-radius: 30px;
+      @include prefix-border-radius(30px);
       width: 30px;
       height: 30px;
       overflow: hidden;
@@ -145,7 +111,7 @@ $font-size: 14px;
       color: #fff;
       text-align: right;
       background: linear-gradient(120deg, #248A52, #257287);
-      border-radius: 10px 10px 0 10px;
+      @include prefix-border-radius(10px 10px 0 10px);
       &::before {
         left: auto;
         right: 0;
@@ -173,7 +139,7 @@ $font-size: 14px;
         border: none;
         animation-delay: .15s;
       }
-      & span {
+      span {
         display: block;
         font-size: 0;
         width: 20px;
@@ -202,7 +168,7 @@ $font-size: 14px;
   background: rgba(0, 0, 0, 0.3);
   padding: 10px;
   position: relative;
-  & .message-input {
+  .message-input {
     border: none;
     outline: none!important;
     resize: none;
@@ -217,7 +183,7 @@ $font-size: 14px;
   textarea:focus:-webkit-placeholder {
     color: transparent;
   }
-  & .message-submit {
+  .message-submit {
     position: absolute;
     z-index: 1;
     top: 9px;
@@ -229,7 +195,7 @@ $font-size: 14px;
     text-transform: uppercase;
     line-height: 1;
     padding: 6px 10px;
-    border-radius: 10px;
+    @include prefix-border-radius(10px);
     outline: none!important;
     transition: background .2s ease;
     &:hover {

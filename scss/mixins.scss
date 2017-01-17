@@ -1,6 +1,153 @@
-@mixin border-radius($radius) {
+@mixin prefix-border-radius($radius) {
     -webkit-border-radius: $radius;
     -moz-border-radius: $radius;
     -ms-border-radius: $radius;
     border-radius: $radius;
+}
+
+// http://joshbroton.com/quick-fix-sass-mixins-for-css-keyframe-animations/
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation: $animations;
+    -o-animation: $animations;
+    animation: $animations;
+}
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} {
+        @content;
+    }
+    @-moz-keyframes #{$animationName} {
+        @content;
+    }
+    @-o-keyframes #{$animationName} {
+        @content;
+    }
+    @keyframes #{$animationName} {
+        @content;
+    }
+}
+
+// https://gist.github.com/juliocesar/8105794
+// Prefix mixins
+// =============
+//
+// A set of SASS mixins for abstracting vendor prefixes.
+@mixin background-size($parameters) {
+    -webkit-background-size: $parameters;
+    -moz-background-size: $parameters;
+    -o-background-size: $parameters;
+    background-size: $parameters;
+}
+
+@mixin prefix-background-clip($parameters) {
+    -webkit-background-clip: $parameters;
+    -moz-background-clip: $parameters;
+    -ms-background-clip: $parameters;
+    background-clip: $parameters;
+}
+
+@mixin prefix-transition($parameters...) {
+    -webkit-transition: $parameters;
+    -moz-transition: $parameters;
+    -ms-transition: $parameters;
+    transition: $parameters;
+}
+
+@mixin prefix-perspective($parameters) {
+    -webkit-perspective: $parameters;
+    -moz-perspective: $parameters;
+    -ms-perspective: $parameters;
+    perspective: $parameters;
+}
+
+@mixin prefix-transition-delay($parameters) {
+    -webkit-transition-delay: $parameters;
+    -moz-transition-delay: $parameters;
+    -ms-transition-delay: $parameters;
+    transition-delay: $parameters;
+}
+
+@mixin prefix-transform($parameters) {
+    -webkit-transform: $parameters;
+    -moz-transform: $parameters;
+    -ms-transform: $parameters;
+    transform: $parameters;
+}
+
+@mixin prefix-transform-origin($parameters) {
+    -webkit-transform-origin: $parameters;
+    -moz-transform-origin: $parameters;
+    -ms-transform-origin: $parameters;
+    transform-origin: $parameters;
+}
+
+@mixin prefix-animation($parameters) {
+    -webkit-animation: $parameters;
+    -moz-animation: $parameters;
+    -ms-animation: $parameters;
+    animation: $parameters;
+}
+
+@mixin prefix-animation-delay($parameters) {
+    -webkit-animation-delay: $parameters;
+    -moz-animation-delay: $parameters;
+    -ms-animation-delay: $parameters;
+    animation-delay: $parameters;
+}
+
+@mixin prefix-animation-fill-mode($parameters) {
+    -webkit-animation-fill-mode: $parameters;
+    -moz-animation-fill-mode: $parameters;
+    -ms-animation-fill-mode: $parameters;
+    animation-fill-mode: $parameters;
+}
+
+@mixin prefix-animation-play-state($parameters) {
+    -webkit-animation-play-state: $parameters;
+    -moz-animation-play-state: $parameters;
+    -ms-animation-play-state: $parameters;
+    animation-play-state: $parameters;
+}
+
+@mixin prefix-user-select($parameters) {
+    -webkit-user-select: $parameters;
+    -moz-user-select: $parameters;
+    user-select: $parameters;
+}
+
+@mixin prefix-filter($parameters) {
+    -webkit-filter: $parameters;
+    -moz-filter: $parameters;
+    -ms-filter: $parameters;
+    filter: $parameters;
+}
+
+// =====================================================================================================================
+@mixin center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin ball {
+  @include center;
+  content: '';
+  display: block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .5);
+  z-index: 2;
+  margin-top: 4px;
+  animation: ball .45s cubic-bezier(0, 0, 0.15, 1) alternate infinite;
 }

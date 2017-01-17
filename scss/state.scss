@@ -72,7 +72,7 @@
             transform: translate(-50%, -50%);
         }
         .count {
-            @include border-radius(50%);
+            @include prefix-border-radius(50%);
             font-size: 15px;
             padding: 5px;
             position: absolute;
@@ -121,13 +121,13 @@
         &.user-online .user,
         &.waiting-board .board,
         &.playing-board .board {
-            @include border-radius(2px);
+            @include prefix-border-radius(2px);
             display: block;
             background: rgba(0, 0, 0, 0.2);
             color: #fff;
             font-weight: bold;
             border: 1px dashed #fff;
-            @include border-radius(10px);
+            @include prefix-border-radius(10px);
             box-shadow: 0 0 0 4px rgba(10, 20, 0, 0.1), 2px 1px 6px 4px rgba(10, 10, 0, 0.1);
             text-shadow: -1px -1px rgba(20, 10, 0, 0.1);
             font-weight: normal;
@@ -163,13 +163,13 @@
                         height: 10px;
                         margin: auto 5px;
                         background: #fff;
-                        @include border-radius(50px);
-                        animation: loader 0.9s infinite alternate;
+                        @include prefix-border-radius(50px);
+                        @include prefix-animation(loader 0.9s infinite alternate);
                         &:nth-of-type(2) {
-                            animation-delay: 0.3s;
+                            @include prefix-animation-delay(0.3s);
                         }
                         &:nth-of-type(3) {
-                            animation-delay: 0.6s;
+                            @include prefix-animation-delay(0.6s);
                         }
                     }
                 }
@@ -202,7 +202,7 @@
         display: inline-block;
     }
     .avatar {
-        @include border-radius(30px);
+        @include prefix-border-radius(30px);
         width: 30px;
         height: 30px;
         overflow: hidden;
