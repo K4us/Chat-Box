@@ -9,7 +9,7 @@
          $ cd Chat-Box
          $ npm install
 
-3. Edit sass code in  `scss/style.scss`
+3. Edit sass code in  `scss/*`
 
 4. Let run.
 
