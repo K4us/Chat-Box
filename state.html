@@ -1,0 +1,51 @@
+<html>
+
+<head>
+    <title>Tab</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div id="state">
+        <div id="side-bar-state">
+            <div class="content">
+                <a href="#" data="user-online" class="user-online item">
+                    <i class="icon"></i>
+                    <span class="count">10</span>
+                </a>
+                <a href="#" data="waiting-board" class="waiting-board item">
+                    <i class="icon"></i>
+                    <span class="count">10</span>
+                </a>
+                <a href="#" data="playing-board" class="playing-board item active">
+                    <i class="icon"></i>
+                    <span class="count">10</span>
+                </a>
+            </div>
+        </div>
+        <div id="tab-state">
+            <div class="user-online tab">
+                <div class="title">
+                    User Online
+                </div>
+                <div class="content"></div>
+            </div>
+            <div class="waiting-board tab">
+                <div class="title">
+                    Waiting Board
+                </div>
+                <div class="content"></div>
+            </div>
+            <div class="playing-board tab active">
+                <div class="title">
+                    Playing Board
+                </div>
+                <div class="content"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/state.js"></script>
+</body>
+
+</html>

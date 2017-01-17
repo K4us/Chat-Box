@@ -35,7 +35,7 @@ function ActiveBox(option) {
         if (n == void 0) return Number(this._playingBoard.text() || 0);
         this._playingBoard.text(n);
     };
-    this.addUser = function (user) {
+    this.addUserOnline = function (user) {
         var element = '<a href="#" class="user" data="' + user.id + '" onclick="ActiveBox.userOnlineClick(this);">' +
             '<figure class="avatar">' +
             '<img src="' + user.avatar + '" />' +
@@ -43,6 +43,32 @@ function ActiveBox(option) {
             '<span class="name">' + user.name + '</span>' +
             '</a>';
         this._userOnlineContainer.append(element);
+    };
+    this.addWaitingBoard = function (board) {
+        var element = '<a href="#" class="board" data="' + board.id + '" onclick="ActiveBox.boardClick(this, true);">' +
+            '<div class="user">' +
+            '<figure class="avatar"><img src="' + board.user.avatar + '"></figure>' +
+            '<span class="name">' + board.user.name + '</span>' +
+            '</div>' +
+            '<div class="vs">vs' +
+            '<span></span><span></span><span></span>' +
+            '</div>' +
+            '</a>';
+        this._waitingBoardContainer.append(element);
+    };
+    this.addPlayingBoard = function (board) {
+        var element = '<a href="#" class="board" data="' + board.id + '" onclick="ActiveBox.boardClick(this);">' +
+            '<div class="left-user user">' +
+            '<figure class="avatar"><img src="' + board.whiteUser.avatar + '"></figure>' +
+            '<span class="name">' + board.whiteUser.name + '</span>' +
+            '</div>' +
+            '<div class="vs">vs</div>' +
+            '<div class="right-user user">' +
+            '<figure class="avatar"><img src="' + board.blackUser.avatar + '"></figure>' +
+            '<span class="name">' + board.blackUser.name + '</span>' +
+            '</div>' +
+            '</a>';
+        this._playingBoardContainer.append(element);
     };
 
     this.addUserOnlineClickListener = function (listener, context) {
@@ -77,31 +103,52 @@ $(document).ready(function () {
         name: 'user',
         avatar: 'avatar.png'
     }
-    var activeBox = new ActiveBox({
+    var stateBox = new ActiveBox({
         width: 400,
         height: 600,
         user: user
     });
-    activeBox.addUserOnlineClickListener(function (id) {
+    stateBox.addUserOnlineClickListener(function (id) {
         console.log('User id:' + id + ' clicked');
     }, this)
-    activeBox.addWaitingBoardClickListener(function (id) {
+    stateBox.addWaitingBoardClickListener(function (id) {
         console.log('Waiting board id:' + id + ' clicked');
     }, this)
-    activeBox.addPlayingBoardClickListener(function (id) {
+    stateBox.addPlayingBoardClickListener(function (id) {
         console.log('Playing board id:' + id + ' clicked');
     }, this)
     setInterval(function () {
         this.userOnlineCount(Math.floor(Math.random() * 95) + 5);
         this.waitingBoardCount(Math.floor(Math.random() * 95) + 5);
         this.playingBoardCount(Math.floor(Math.random() * 95) + 5);
-    }.bind(activeBox), 3000);
+    }.bind(stateBox), 3000);
 
     for (var i = 0; i < 70; i++) {
-        activeBox.addUser({
+        stateBox.addUserOnline({
             id: '00' + i,
             name: 'User 00' + i,
-            avatar: '../image/avatar.png'
-        })
+            avatar: 'image/avatar.png'
+        });
+        stateBox.addWaitingBoard({
+            id: '00' + i,
+            user: {
+                id: '00' + i,
+                name: 'user 00' + i,
+                avatar: 'image/avatar.png'
+            }
+        });
+        stateBox.addPlayingBoard({
+            id: '00' + i,
+            whiteUser: {
+                id: '00' + i,
+                name: 'white user 00' + i,
+                avatar: 'image/avatar.png'
+            },
+            blackUser: {
+                id: '00' + i,
+                name: 'black user 00' + i,
+                avatar: 'image/avatar.png'
+            }
+        });
     }
 });
