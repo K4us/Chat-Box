@@ -9,16 +9,16 @@ function ActiveBox(option) {
     $('#tab-state').width(option.width - 60);
     $('#tab-state .tab .content').height(option.height - 35);
 
-    this._userOnline = $("#side-bar .user-online .numb");
-    this._waitingBoard = $("#side-bar .waiting-board .numb");
-    this._playingBoard = $("#side-bar .playing-board .numb");
+    this._userOnline = $("#side-bar-state .user-online .count");
+    this._waitingBoard = $("#side-bar-state .waiting-board .count");
+    this._playingBoard = $("#side-bar-state .playing-board .count");
     this._userOnlineContainer = $('.tab.user-online .content');
     this._waitingBoardContainer = $('.tab.waiting-board .content');
     this._playingBoardContainer = $('.tab.playing-board .content');
 
-    $("#side-bar .content .item").click(function (e) {
+    $("#side-bar-state .content .item").click(function (e) {
         e.preventDefault();
-        $('#side-bar .content .item').removeClass("active");
+        $('#side-bar-state .content .item').removeClass("active");
         $('#state .tab').removeClass('active');
         var data = $(this).attr('data');
         $('.' + data).addClass("active");

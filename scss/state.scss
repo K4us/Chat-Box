@@ -1,11 +1,10 @@
 #state {
-    z-index: 10;
     background-color: #008eff;
     width: 400px;
     height: 600px;
 }
 
-#side-bar {
+#side-bar-state {
     float: left;
     width: 60px;
     height: 100%;
@@ -30,6 +29,30 @@
             border-top: 13px solid transparent;
             border-left: 10px solid #56b4ff;
         }
+        &.user-online {
+            i {
+                background-position: 0 0;
+            }
+            .count {
+                background-color: red;
+            }
+        }
+        &.waiting-board {
+            i {
+                background-position: 0 -50px;
+            }
+            .count {
+                background-color: yellow;
+            }
+        }
+        &.playing-board {
+            i {
+                background-position: 0 -100px;
+            }
+            .count {
+                background-color: green;
+            }
+        }
         .icon {
             width: 50px;
             height: 50px;
@@ -43,16 +66,7 @@
             -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
         }
-        &.user-online i {
-            background-position: 0 0;
-        }
-        &.waiting-board i {
-            background-position: 0 -50px;
-        }
-        &.playing-board i {
-            background-position: 0 -100px;
-        }
-        .numb {
+        .count {
             border-radius: 50%;
             font-size: 15px;
             padding: 5px;
@@ -62,20 +76,7 @@
             color: black;
             font-weight: bold;
         }
-        &.user-online .numb {
-            background-color: red;
-        }
-        &.waiting-board .numb {
-            background-color: yellow;
-        }
-        &.playing-board .numb {
-            background-color: green;
-        }
     }
-}
-
-.tab:not(.active) {
-    display: none;
 }
 
 #tab-state {
@@ -83,131 +84,128 @@
     width: 80%;
     height: 100%;
     margin: 0;
+    .tab:not(.active) {
+        display: none !important;
+    }
+    .tab {
+        .title {
+            height: 30px;
+            text-transform: uppercase;
+            color: #fff;
+            text-align: center;
+            font-weight: normal;
+            font-size: 14px;
+            padding-top: 5px;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        .content {
+            height: 90%;
+            overflow-x: hidden;
+            overflow-y: scroll;
+            padding-left: 10px;
+            box-shadow: inset 0 0 10px #000000;
+        }
+        &.user-online {
+            .user {
+                padding: 1px;
+            }
+        }
+        &.user-online .user,
+        &.waiting-board .board,
+        &.playing-board .board {
+            border-radius: 2px;
+            display: block;
+            background: rgba(0, 0, 0, 0.2);
+            color: #fff;
+            font-weight: bold;
+            border: 1px dashed #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 0 4px rgba(10, 20, 0, 0.1), 2px 1px 6px 4px rgba(10, 10, 0, 0.1);
+            text-shadow: -1px -1px rgba(20, 10, 0, 0.1);
+            font-weight: normal;
+            margin: 10px;
+            padding: 5px;
+            text-decoration: none;
+        }
+        .board {
+            .vs {
+                margin: auto;
+                text-shadow: 1px 1px #fff;
+                font-size: 25px;
+            }
+        }
+        &.waiting-board .board .user,
+        &.waiting-board .board .vs {
+            display: inline-block;
+        }
+        &.waiting-board {
+            .board {
+                .user {
+                    width: 70%;
+                    overflow-x: auto;
+                }
+                .vs {
+                    float: right;
+                    vertical-align: middle;
+                    color: yellow;
+                    span {
+                        display: inline-block;
+                        vertical-align: middle;
+                        width: 10px;
+                        height: 10px;
+                        margin: auto 5px;
+                        background: #fff;
+                        border-radius: 50px;
+                        animation: loader 0.9s infinite alternate;
+                        &:nth-of-type(2) {
+                            animation-delay: 0.3s;
+                        }
+                        &:nth-of-type(3) {
+                            animation-delay: 0.6s;
+                        }
+                    }
+                }
+            }
+        }
+        &.playing-board {
+            .board {
+                display: flex;
+                .user {
+                    width: 40%;
+                    overflow-x: auto;
+                }
+                .vs {
+                    color: green;
+                }
+                .right-user {
+                    float: right;
+                }
+            }
+        }
+    }
 }
 
-.tab .title {
-    height: 30px;
-    text-transform: uppercase;
-    color: #fff;
-    text-align: center;
-    font-weight: normal;
-    font-size: 14px;
-    padding-top: 5px;
-    background: rgba(0, 0, 0, 0.2);
-}
-
-.tab .content {
-    height: 90%;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding-left: 10px;
-    box-shadow: inset 0 0 10px #000000;
-}
-
-.user-online.tab .user {
-    padding: 1px;
-}
-
-.user .avatar,
-.user .name {
-    display: inline-block;
-}
-
-.user .avatar {
-    border-radius: 30px;
-    width: 30px;
-    height: 30px;
-    overflow: hidden;
-    margin: 0;
-    padding: 0;
-    border: 2px solid rgba(255, 255, 255, 0.24);
-}
-
-.user .avatar img {
-    width: 100%;
-    height: auto;
-}
-
-.user .name {
-    color: #fff;
-    vertical-align: top;
-    margin-top: 5px;
-}
-
-.user-online.tab .user,
-.waiting-board.tab .board,
-.playing-board.tab .board {
-    border-radius: 2px;
-    display: block;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
-    font-weight: bold;
-    border: 1px dashed #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 0 4px rgba(10, 20, 0, 0.1), 2px 1px 6px 4px rgba(10, 10, 0, 0.1);
-    text-shadow: -1px -1px rgba(20, 10, 0, 0.1);
-    font-weight: normal;
-    margin: 10px;
-    padding: 5px;
-    text-decoration: none;
-}
-
-.waiting-board.tab .board .user,
-.waiting-board.tab .board .vs {
-    display: inline-block;
-}
-
-.waiting-board.tab .board .user {
-    width: 70%;
-    overflow-x: auto;
-}
-
-.waiting-board.tab .board .vs {
-    float: right;
-    vertical-align: middle;
-    color: yellow;
-}
-
-.waiting-board.tab .board .vs span {
-    display: inline-block;
-    vertical-align: middle;
-    width: 10px;
-    height: 10px;
-    margin: auto 5px;
-    background: #fff;
-    border-radius: 50px;
-    -webkit-animation: loader 0.9s infinite alternate;
-}
-
-.waiting-board.tab .board .vs span:nth-of-type(2) {
-    -webkit-animation-delay: 0.3s;
-}
-
-.waiting-board.tab .board .vs span:nth-of-type(3) {
-    -webkit-animation-delay: 0.6s;
-}
-
-.playing-board.tab .board {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-}
-
-.tab .board .vs {
-    margin: auto;
-    text-shadow: 1px 1px #fff;
-    font-size: 25px;
-}
-
-.playing-board.tab .board .vs {
-    color: green;
-}
-
-.playing-board.tab .board .right-user {
-    float: right;
-}
-
-.playing-board.tab .board .user {
-    width: 40%;
-    overflow-x: auto;
+.user {
+    .avatar,
+    .name {
+        display: inline-block;
+    }
+    .avatar {
+        border-radius: 30px;
+        width: 30px;
+        height: 30px;
+        overflow: hidden;
+        margin: 0;
+        padding: 0;
+        border: 2px solid rgba(255, 255, 255, 0.24);
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+    .name {
+        color: #fff;
+        vertical-align: top;
+        margin-top: 5px;
+    }
 }
