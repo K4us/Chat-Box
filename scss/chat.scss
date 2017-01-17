@@ -45,13 +45,13 @@ $font-size: 14px;
 
 /*--------------------Messages--------------------*/
 
-.messages {
+#messages {
   flex: 1 1 auto;
   color: rgba(255, 255, 255, .5);
   overflow: hidden;
   position: relative;
   width: 100%;
-  .messages-content {
+  #messages-content {
     position: absolute;
     top: 0;
     left: 0;
@@ -168,7 +168,7 @@ $font-size: 14px;
   background: rgba(0, 0, 0, 0.3);
   padding: 10px;
   position: relative;
-  .message-input {
+  #message-input {
     border: none;
     outline: none!important;
     resize: none;
@@ -183,7 +183,7 @@ $font-size: 14px;
   textarea:focus:-webkit-placeholder {
     color: transparent;
   }
-  .message-submit {
+  #message-submit {
     position: absolute;
     z-index: 1;
     top: 9px;
