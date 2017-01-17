@@ -48,7 +48,6 @@
     display: block;
     border-bottom: 1px solid #ddd;
     height: 70px;
-    text-decoration: none;
 }
 
 .tab:not(.active) {
@@ -131,13 +130,7 @@
     background-color: green;
 }
 
-.tab .user {
-    display: block;
-    margin: 5px;
-    -moz-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
-    -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.5);
-    box-shadow: inset inset 0 0 1px rgba(0, 0, 0, 0.5);
-    border-radius: 2px;
+.user-online.tab .user {
     padding: 1px;
 }
 
@@ -163,7 +156,91 @@
 
 .user .name {
     color: #fff;
-    margin-left: 5px;
     vertical-align: top;
     margin-top: 5px;
+}
+
+.user-online.tab .user,
+.waiting-board.tab .board,
+.playing-board.tab .board {
+    border-radius: 2px;
+    display: block;
+    background: rgba(0, 0, 0, 0.2);
+    color: #fff;
+    font-weight: bold;
+    border: 1px dashed #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 0 4px rgba(10, 20, 0, 0.1), 2px 1px 6px 4px rgba(10, 10, 0, 0.1);
+    text-shadow: -1px -1px rgba(20, 10, 0, 0.1);
+    font-weight: normal;
+    margin: 10px;
+    padding: 5px;
+    text-decoration: none;
+}
+
+.waiting-board.tab .board .user,
+.waiting-board.tab .board .vs {
+    display: inline-block;
+}
+
+.waiting-board.tab .board .user {
+    width:70%;
+    overflow-x: auto;
+}
+
+.waiting-board.tab .board .vs {
+    float: right;   
+    vertical-align: middle;
+    color: yellow;
+}
+
+.waiting-board.tab .board .vs span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 10px;
+    height: 10px;
+    margin: auto 5px;
+    background: #fff;
+    border-radius: 50px;
+    -webkit-animation: loader 0.9s infinite alternate;
+}
+
+.waiting-board.tab .board .vs span:nth-of-type(2) {
+    -webkit-animation-delay: 0.3s;
+}
+
+.waiting-board.tab .board .vs span:nth-of-type(3) {
+    -webkit-animation-delay: 0.6s;
+}
+
+@-webkit-keyframes loader {
+    0% {
+        -webkit-transform: translateY(0);
+    }
+    100% {
+        -webkit-transform: translateY(-15px);
+    }
+}
+
+.playing-board.tab .board {
+    display: flex;
+}
+
+.tab .board .vs {
+    margin: auto;
+    text-shadow: 1px 1px #fff;
+    font-size: 25px;
+}
+
+.playing-board.tab .board .vs {
+    color: green;
+}
+
+.playing-board.tab .board .right-user {
+    float: right;
+}
+
+.playing-board.tab .board .user {
+    width: 40%;
+    overflow-x: auto;
 }
