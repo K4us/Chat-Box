@@ -1,29 +1,25 @@
 "use strict";
 
 function ActiveBox(option) {
-    var box = $('#box');
-    box.css({
+    var state = $('#state');
+    state.css({
         'width': option.width + 'px',
         'height': option.height + 'px'
     });
-    $('#tab-box').css({
-        'width': (option.width - 60) + 'px'
-    })
-    $('#tab-box .tab .content').css({
-        'height': (option.height - 35) + 'px'
-    })
+    $('#tab-state').width(option.width - 60);
+    $('#tab-state .tab .content').height(option.height - 35);
 
-    this._userOnline = $("#box .user-online .numb");
-    this._waitingBoard = $("#box .waiting-board .numb");
-    this._playingBoard = $("#box .playing-board .numb");
+    this._userOnline = $("#side-bar .user-online .numb");
+    this._waitingBoard = $("#side-bar .waiting-board .numb");
+    this._playingBoard = $("#side-bar .playing-board .numb");
     this._userOnlineContainer = $('.tab.user-online .content');
     this._waitingBoardContainer = $('.tab.waiting-board .content');
     this._playingBoardContainer = $('.tab.playing-board .content');
 
-    $("#box .side-bar-item").click(function (e) {
+    $("#side-bar .content .item").click(function (e) {
         e.preventDefault();
-        $('#box .side-bar-item').removeClass("active");
-        $('#box .tab').removeClass('active');
+        $('#side-bar .content .item').removeClass("active");
+        $('#state .tab').removeClass('active');
         var data = $(this).attr('data');
         $('.' + data).addClass("active");
     });
