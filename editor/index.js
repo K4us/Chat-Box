@@ -13,11 +13,9 @@ $(document).ready(function () {
     else $(this).addClass("selected");
     ItalicIt();
   });
-  $("#fonts").on('change', function () {
-    changeFont($("#fonts").val());
-  });
   $("#link").click(function () {
-    url(prompt("What is the link:", "http://"));
+    var text = prompt("What is the link:", "http://")
+    if (text) url(text);
   });
   $("#stext").click(function () {
     $("#text").hide();
@@ -51,13 +49,6 @@ function ItalicIt() {
   edit.focus();
 }
 
-function changeFont(font) {
-  var edit = document.getElementById("textEditor").contentWindow;
-  edit.focus();
-  edit.document.execCommand("FontName", false, font);
-  edit.focus();
-}
-
 function url(url) {
   var edit = document.getElementById("textEditor").contentWindow;
   edit.focus();
@@ -66,7 +57,7 @@ function url(url) {
 }
 
 setInterval(function () {
-  var gyt = $("#textEditor").contents().find("body").html().match(/@/g);
+  var gyt = $("#textEditor").contents().find("body").html().match(/ /g);
   if ($("#textEditor").contents().find("body").html().match(/@/g) >= 0) {} else {
     $("#text").val($("#textEditor").contents().find("body").html());
   }
