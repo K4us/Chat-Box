@@ -17,6 +17,10 @@ $(document).ready(function () {
     var text = prompt("What is the link:", "http://")
     if (text) url(text);
   });
+  $("#mention").click(function () {
+    var text = prompt("Give a name:")
+    if (text) mention(text);
+  });
   $("#stext").click(function () {
     $("#text").hide();
     $("#textEditor").show();
@@ -32,7 +36,7 @@ $(document).ready(function () {
     $("#stext").show();
   });
   $("#text").hide();
-  $("#stext").hide();
+  // $("#stext").hide();
 });
 
 function boldIt() {
@@ -52,7 +56,15 @@ function ItalicIt() {
 function url(url) {
   var edit = document.getElementById("textEditor").contentWindow;
   edit.focus();
-  edit.document.execCommand("Createlink", false, url);
+  edit.document.execCommand("createLink", false, url);
+  edit.focus();
+}
+
+function mention(name) {
+  var edit = document.getElementById("textEditor").contentWindow;
+  edit.focus();
+  edit.document.execCommand("insertHtml", false, '@<span style="color:red;">' + name + '</span>');
+  edit.document.execCommand("insertHtml", false, '&nbsp;');
   edit.focus();
 }
 
