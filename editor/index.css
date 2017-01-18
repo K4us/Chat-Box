@@ -6,25 +6,30 @@
     font-style: italic;
 }
 
+a {
+    padding: 5px;
+}
+
 .selected {
-    background-color: orange;
+    background-color: #5800ff;
 }
 
 #openpb {
     margin: 15px;
 }
 
-#textEditor {
-    width: 500px;
-    height: 80px;
+#textEditor,
+#text {
     border: 2px solid #CCC;
     border-radius: 5px;
     overflow: auto;
 }
 
+#textEditor {
+    width: 500px;
+    height: 80px;
+}
+
 #text {
-    border-radius: 20px;
-    overflow: auto;
-    display: none;
     padding-left: 10px;
 }

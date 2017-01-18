@@ -4,19 +4,13 @@ $(document).ready(function () {
   var edit = document.getElementById("textEditor").contentWindow;
   edit.focus();
   $("#bold").click(function () {
-    if ($(this).hasClass("selected")) {
-      $(this).removeClass("selected");
-    } else {
-      $(this).addClass("selected");
-    }
+    if ($(this).hasClass("selected")) $(this).removeClass("selected");
+    else $(this).addClass("selected");
     boldIt();
   });
   $("#italic").click(function () {
-    if ($(this).hasClass("selected")) {
-      $(this).removeClass("selected");
-    } else {
-      $(this).addClass("selected");
-    }
+    if ($(this).hasClass("selected")) $(this).removeClass("selected");
+    else $(this).addClass("selected");
     ItalicIt();
   });
   $("#fonts").on('change', function () {
@@ -28,13 +22,19 @@ $(document).ready(function () {
   $("#stext").click(function () {
     $("#text").hide();
     $("#textEditor").show();
-    $("#controls").show()
+    $("#controls").show();
+    $("#shtml").show();
+    $("#stext").hide();
   });
   $("#shtml").on('click', function () {
-    $("#text").css("display", "block");
+    $("#text").show();
     $("#textEditor").hide();
     $("#controls").hide();
+    $("#shtml").hide();
+    $("#stext").show();
   });
+  $("#text").hide();
+  $("#stext").hide();
 });
 
 function boldIt() {
