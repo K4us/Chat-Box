@@ -1,14 +1,25 @@
 "use strict";
 
 function ActiveBox(option) {
+    this.box = $('#state');
     this.resize = function (option) {
-        this.width = option.width;
-        this.height = option.height;
-        var state = $('#state');
-        state.width(option.width);
-        state.height(option.height);
-        $('#tab-state').width(option.width - 60);
-        $('#tab-state .tab .content').height(option.height - 35);
+        option = option || {};
+        this.width = option.width || $(document).width();
+        this.height = option.height || $(document).height();
+        this.box.width(this.width);
+        this.box.height(this.height);
+        $('#tab-state').width(this.width - 60);
+        $('#tab-state .tab .content').height(this.height - 35);
+        this.position(option);
+    };
+    this.position = function (option) {
+        option = option || {};
+        this.x = option.x || this.x || 0;
+        this.y = option.y || this.y || 0;
+        this.box.css({
+            left: this.x,
+            top: this.y - this.height,
+        });
     };
     this.resize(option);
 
@@ -109,6 +120,8 @@ $(document).ready(function () {
     window.stateBox = new ActiveBox({
         width: 300,
         height: 300,
+        x: 0,
+        y: 400,
         user: user
     });
     stateBox.addUserOnlineClickListener(function (id) {

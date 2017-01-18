@@ -1,20 +1,31 @@
 "use strict";
 var appendFakeMessage;
 var MessageBox = function (option) {
+  this.box = $('#chat');
   this.getNewMessageWidth = function () {
     return this.width - 80;
   };
   this.resize = function (option) {
-    this.width = option.width;
-    this.height = option.height;
-    $('#chat').css({
-      'width': option.width + 'px',
-      'height': option.height + 'px'
-    });
-    $('#message-input').width(option.width - 85);
+    option = option || {};
+    this.width = option.width || $(document).width();
+    this.height = option.height || $(document).height();
+    this.box.width(this.width);
+    this.box.height(this.height);
+    $('#message-input').width(this.width - 85);
     $('#messages .message.new').width(this.getNewMessageWidth());
+    this.position(option);
   }
+  this.position = function (option) {
+    option = option || {};
+    this.x = option.x || this.x || 0;
+    this.y = option.y || this.y || 0;
+    this.box.css({
+      left: this.x,
+      top: this.y - this.height,
+    });
+  };
   this.resize(option);
+
   this.user = option.user;
   this.timeI = 0;
   this.messageContent = $('#messages-content');
@@ -108,7 +119,9 @@ $(document).ready(function () {
   window.messageBox = new MessageBox({
     user: user,
     width: 400,
-    height: 600
+    height: 600,
+    x: 0,
+    y: 630
   });
   appendFakeMessage = function () {
     messageBox.loading();
