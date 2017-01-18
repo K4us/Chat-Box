@@ -29,6 +29,8 @@ $(document).ready(function () {
     $("#stext").hide();
   });
   $("#shtml").on('click', function () {
+    $("#text").val($("#textEditor").contents().find("body").html());
+
     $("#text").show();
     $("#textEditor").hide();
     $("#controls").hide();
@@ -36,7 +38,7 @@ $(document).ready(function () {
     $("#stext").show();
   });
   $("#text").hide();
-  // $("#stext").hide();
+  $("#stext").hide();
 });
 
 function boldIt() {
@@ -67,11 +69,3 @@ function mention(name) {
   edit.document.execCommand("insertHtml", false, '&nbsp;');
   edit.focus();
 }
-
-setInterval(function () {
-  var gyt = $("#textEditor").contents().find("body").html().match(/ /g);
-  if ($("#textEditor").contents().find("body").html().match(/@/g) >= 0) {} else {
-    $("#text").val($("#textEditor").contents().find("body").html());
-  }
-  $("#text").val($("#textEditor").contents().find("body").html());
-}, 1000);

@@ -1,11 +1,20 @@
 "use strict";
 var appendFakeMessage;
 var MessageBox = function (option) {
-  var chat = $('#chat');
-  chat.css({
-    'width': option.width + 'px',
-    'height': option.height + 'px'
-  });
+  this.getNewMessageWidth = function () {
+    return this.width - 80;
+  };
+  this.resize = function (option) {
+    this.width = option.width;
+    this.height = option.height;
+    $('#chat').css({
+      'width': option.width + 'px',
+      'height': option.height + 'px'
+    });
+    $('#message-input').width(option.width - 85);
+    $('#messages .message.new').width(this.getNewMessageWidth());
+  }
+  this.resize(option);
   this.user = option.user;
   this.timeI = 0;
   this.messageContent = $('#messages-content');
@@ -79,7 +88,8 @@ var MessageBox = function (option) {
       this.setInfo(this.textAlign.RIGHT, (new Date()).toISOString());
     } else {
       $('.message.loading').remove();
-      var element = '<div class="message new"><figure class="avatar"><img src="' + message.sender.avatar + '" /></figure>' + message.text + '</div>'
+      var element = '<div class="message new" style="width: ' + this.getNewMessageWidth() + 'px"><figure class="avatar"><img src="' +
+        message.sender.avatar + '" /></figure>' + message.text + '</div>'
       $(element).appendTo($('.mCSB_container')).addClass('new');
       this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
     }
@@ -95,7 +105,7 @@ $(document).ready(function () {
     id: '123',
     name: 'sender'
   };
-  var messageBox = new MessageBox({
+  window.messageBox = new MessageBox({
     user: user,
     width: 400,
     height: 600

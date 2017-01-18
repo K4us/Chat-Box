@@ -1,9 +1,7 @@
 /*--------------------State--------------------*/
 
 #state {
-    background-color: #008eff;
-    width: 400px;
-    height: 600px;
+    @include parent;
 }
 
 

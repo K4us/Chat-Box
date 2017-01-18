@@ -1,13 +1,16 @@
 "use strict";
 
 function ActiveBox(option) {
-    var state = $('#state');
-    state.css({
-        'width': option.width + 'px',
-        'height': option.height + 'px'
-    });
-    $('#tab-state').width(option.width - 60);
-    $('#tab-state .tab .content').height(option.height - 35);
+    this.resize = function (option) {
+        this.width = option.width;
+        this.height = option.height;
+        var state = $('#state');
+        state.width(option.width);
+        state.height(option.height);
+        $('#tab-state').width(option.width - 60);
+        $('#tab-state .tab .content').height(option.height - 35);
+    };
+    this.resize(option);
 
     this._userOnline = $("#side-bar-state .user-online .count");
     this._waitingBoard = $("#side-bar-state .waiting-board .count");
@@ -103,9 +106,9 @@ $(document).ready(function () {
         name: 'user',
         avatar: 'avatar.png'
     }
-    var stateBox = new ActiveBox({
-        width: 400,
-        height: 600,
+    window.stateBox = new ActiveBox({
+        width: 300,
+        height: 300,
         user: user
     });
     stateBox.addUserOnlineClickListener(function (id) {
