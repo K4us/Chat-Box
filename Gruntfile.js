@@ -7,7 +7,7 @@ module.exports = function (grunt) {
                     sourcemap: 'none'
                 },
                 files: {
-                    'css/style.css': 'scss/style.scss'
+                    'css/box.css': 'scss/style.scss'
                 }
             }
         }
