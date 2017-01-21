@@ -14,13 +14,13 @@
   position: relative;
   z-index: 2;
   background: rgba(0, 0, 0, 0.2);
-  color: #fff;
+  color: $text-color;
   text-transform: uppercase;
   text-align: center;
   height: 30px;
   h1,
   h2 {
-    font-weight: normal;
+    font-weight: bold;
     font-size: $font-size;
     margin: 5px;
     padding: 0;
@@ -64,12 +64,12 @@
       position: absolute;
       bottom: -15px;
       font-size: $font-size - 1px;
-      color: rgba(255, 255, 255, .6);
+      color: rgba( $text-color, .6);
       width: 100%;
       padding-right: 15px;
     }
     .sender {
-      color: #fff;
+      color: $text-color;
     }
     &::before {
       content: '';
@@ -98,7 +98,7 @@
     }
     &.message-personal {
       float: right;
-      color: #fff;
+      color: $text-color;
       text-align: right;
       background: linear-gradient(120deg, #248A52, #257287);
       @include prefix-border-radius(10px 10px 0 10px);
@@ -114,9 +114,9 @@
     &:last-child {
       margin-bottom: 30px;
     }
-    &.new {
+    &.new, &.loading {
       width: 85%;
-      color: #fff;
+      color: $text-color;
       @include prefix-transform(scale(0));
       @include prefix-transform-origin(0 0);
       @include prefix-animation(bounce 500ms linear both);
@@ -178,9 +178,9 @@
     z-index: 1;
     top: 12px;
     right: 25px;
-    color: #fff;
+    color: $text-color;
     border: none;
-    background: #248A52;
+    background: rgba(0, 0, 0, 0.2);
     font-size: $font-size;
     text-transform: uppercase;
     line-height: 1;

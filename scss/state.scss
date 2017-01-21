@@ -18,8 +18,8 @@
         border-bottom: 1px solid #ddd;
         height: 70px;
         &.active {
-            background: #56b4ff;
-            color: #ffffff;
+            background: lighten($brand-color, 10%);
+            color: $text-color;
         }
         &.active:after {
             content: '';
@@ -30,7 +30,7 @@
             border-left: 0;
             border-bottom: 13px solid transparent;
             border-top: 13px solid transparent;
-            border-left: 10px solid #56b4ff;
+            border-left: 10px solid lighten($brand-color, 10%);
         }
         &.user-online {
             i {
@@ -96,9 +96,9 @@
         .title {
             height: 30px;
             text-transform: uppercase;
-            color: #fff;
+            color: $text-color;
             text-align: center;
-            font-weight: normal;
+            font-weight: bold;
             font-size: 14px;
             padding-top: 5px;
             background: rgba(0, 0, 0, 0.2);
@@ -121,9 +121,9 @@
             @include prefix-border-radius(2px);
             display: block;
             background: rgba(0, 0, 0, 0.2);
-            color: #fff;
+            color: $text-color;
             font-weight: bold;
-            border: 1px dashed #fff;
+            border: 1px dashed $text-color;
             @include prefix-border-radius(10px);
             box-shadow: 0 0 0 4px rgba(10, 20, 0, 0.1), 2px 1px 6px 4px rgba(10, 10, 0, 0.1);
             text-shadow: -1px -1px rgba(20, 10, 0, 0.1);
@@ -135,7 +135,7 @@
         .board {
             .vs {
                 margin: auto;
-                text-shadow: 1px 1px #fff;
+                text-shadow: 1px 1px $text-color;
                 font-size: 25px;
             }
         }
@@ -158,7 +158,7 @@
                         width: 10px;
                         height: 10px;
                         margin: auto 5px;
-                        background: #fff;
+                        background: $text-color;
                         @include prefix-border-radius(50px);
                         @include prefix-animation(loader 0.9s infinite alternate);
                         &:nth-of-type(2) {
@@ -211,7 +211,7 @@
         }
     }
     .name {
-        color: #fff;
+        color: $text-color;
         vertical-align: top;
         margin-top: 5px;
     }
