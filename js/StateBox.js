@@ -6,13 +6,13 @@ function StateBox(option) {
     this._userOnline = $("#side-bar-state .user-online .count");
     this._waitingBoard = $("#side-bar-state .waiting-board .count");
     this._playingBoard = $("#side-bar-state .playing-board .count");
-    this._userOnlineContainer = $('.tab.user-online .content');
-    this._waitingBoardContainer = $('.tab.waiting-board .content');
-    this._playingBoardContainer = $('.tab.playing-board .content');
+    this._userOnlineContainer = $('.tab.user-online .container');
+    this._waitingBoardContainer = $('.tab.waiting-board .container');
+    this._playingBoardContainer = $('.tab.playing-board .container');
 
-    $("#side-bar-state .content .item").click(function (e) {
+    $("#side-bar-state .container .item").click(function (e) {
         e.preventDefault();
-        $('#side-bar-state .content .item').removeClass("active");
+        $('#side-bar-state .container .item').removeClass("active");
         $('#state .tab').removeClass('active');
         var data = $(this).attr('data');
         $('.' + data).addClass("active");
@@ -23,7 +23,7 @@ StateBox.prototype = collectProps(StateBox.prototype, box);
 StateBox.prototype.resize = function (option) {
     this._resize(option);
     $('#tab-state').width(this.width - 60);
-    $('#tab-state .tab .content').height(this.height - 35);
+    $('#tab-state .tab .container').height(this.height - 35);
     this.position(option);
 };
 StateBox.prototype.userOnlineCount = function (n) {
