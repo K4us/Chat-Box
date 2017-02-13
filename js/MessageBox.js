@@ -6,7 +6,7 @@ var MessageBox = function (option) {
   this.timeI = 0;
   this.messageContent = $('#messages-content');
   this.inputMessage = $('#message-input');
-  this.messageContent.mCustomScrollbar();
+  // this.messageContent.mCustomScrollbar();
   this.textAlign = {
     LEFT: 'text-align-left',
     CENTER: 'text-align-center',
@@ -39,23 +39,20 @@ MessageBox.prototype.resize = function (option) {
 
 MessageBox.prototype.appendMessage = function (message) {
   if (message.sender.id == this.user.id) {
-    $('<div class="message message-personal">' + message.text + '</div>').appendTo($('.mCSB_container')).addClass('new');
     this.setInfo(this.textAlign.RIGHT, (new Date()).toISOString());
+    $('<div class="message message-personal">' + message.text + '</div>').prependTo(this.messageContent).addClass('new');
   } else {
+    this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
     $('.message.loading').remove();
     var element = '<div class="message new" style="width: ' + this.getNewMessageWidth() + 'px"><figure class="avatar"><img src="' +
       message.sender.avatar + '" /></figure>' + message.text + '</div>'
-    $(element).appendTo($('.mCSB_container')).addClass('new');
-    this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
+    $(element).prependTo(this.messageContent).addClass('new');
   }
-
-  this.updateScrollbar();
 };
 MessageBox.prototype.loading = function () {
   if (this.inputMessage.val() != '') return false;
   var element = '<div class="message loading"><figure class="avatar"><img src="image/avatar-unknown.png" /></figure><span></span></div>';
-  $(element).appendTo($('.mCSB_container'));
-  this.updateScrollbar();
+  $(element).prependTo(this.messageContent);
 };
 MessageBox.prototype.insertMessage = function () {
   var msg = this.inputMessage.val().substr(0, 150);
@@ -82,12 +79,6 @@ MessageBox.prototype.setInfo = function (align, time, sender) {
   element += align == this.textAlign.LEFT ? 'by <span class="sender">' + sender + '</span> on  ' : '';
   element += '<time id="' + timeId + '" datetime="' + time + '"></time></span>';
   element += '</div>';
-  $(element).appendTo($('.message:last'));
+  $(element).prependTo(this.messageContent);
   $("#" + timeId).timeago();
-};
-MessageBox.prototype.updateScrollbar = function () {
-  this.messageContent.mCustomScrollbar("update").mCustomScrollbar('scrollTo', 'bottom', {
-    scrollInertia: 10,
-    timeout: 0
-  });
 };
