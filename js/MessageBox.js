@@ -39,14 +39,16 @@ MessageBox.prototype.resize = function (option) {
 
 MessageBox.prototype.appendMessage = function (message) {
   if (message.sender.id == this.user.id) {
-    this.setInfo(this.textAlign.RIGHT, (new Date()).toISOString());
-    $('<div class="message message-personal">' + message.text + '</div>').prependTo(this.messageContent).addClass('new');
+    var newMessage = $('<div class="message message-personal">' + message.text + '</div>');
+    newMessage.prependTo(this.messageContent).addClass('new');
+    this.genInfo(newMessage, this.textAlign.RIGHT, (new Date()).toISOString());
   } else {
-    this.setInfo(this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
     $('.message.loading').remove();
     var element = '<div class="message new" style="width: ' + this.getNewMessageWidth() + 'px"><figure class="avatar"><img src="' +
       message.sender.avatar + '" /></figure>' + message.text + '</div>'
-    $(element).prependTo(this.messageContent).addClass('new');
+    var newMessage = $(element);
+    newMessage.prependTo(this.messageContent).addClass('new');
+    this.genInfo(newMessage, this.textAlign.LEFT, (new Date()).toISOString(), message.sender.name);
   }
 };
 MessageBox.prototype.loading = function () {
@@ -73,12 +75,13 @@ MessageBox.prototype.insertMessage = function () {
     appendFakeMessage(this);
   }.bind(this), 1000 + (Math.random() * 20) * 100);
 };
-MessageBox.prototype.setInfo = function (align, time, sender) {
+MessageBox.prototype.genInfo = function (parent, align, time, sender) {
   var timeId = 'timestamp' + this.timeI++;
   var element = '<div class="timestamp ' + align + '">';
   element += align == this.textAlign.LEFT ? 'by <span class="sender">' + sender + '</span> on  ' : '';
   element += '<time id="' + timeId + '" datetime="' + time + '"></time></span>';
   element += '</div>';
-  $(element).prependTo(this.messageContent);
+  var info = $(element);
+  info.appendTo(parent);
   $("#" + timeId).timeago();
 };
