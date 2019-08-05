@@ -17,15 +17,5 @@
          $ http-server -o
 
 
-K4us
-=========
-
-<img src="https://avatars2.githubusercontent.com/u/6270780?v=3&s=200" width=200>
-
-K4us is making magic for OKO
-
-Created by [Raksa Eng](mailto:eng.raksa@gmail.com). Powered by faulty love.
-
-The K4us logo &copy; 2017 K4us Limited.
-
-All rights reserved.
+## Licence
+&copy; 2017 K4us Team
